@@ -37,6 +37,7 @@ s_content = ""
 for section in configs.sections():
     if (configs.get(section, 'enddate') != 9) and (TODAY > configs.get(section, 'enddate')):
         continue
+    process.send_msg('221','fghh')
     mobile = privateCrypt.decrypt_aes_ecb(section, aes_key)
     province = configs.get(section, 'province')
     city = configs.get(section, 'city')
@@ -46,7 +47,7 @@ for section in configs.sections():
     lng = configs.get(section, 'lng')
 
     p_c_map, source_data = process.get_map(lat=lat, lng=lng)
-
+    process.send_msg('333','fghh')
     process.UserId = userId
     process.TOKEN = token
     process.init_headers(user_id=userId, token=token, lng=lng, lat=lat)
@@ -79,6 +80,6 @@ for section in configs.sections():
     except BaseException as e:
         print(e)
         logging.error(e)
-
+        process.send_msg('error',e)
 # 推送消息
 process.send_msg(s_title, s_content)
