@@ -17,8 +17,6 @@ logging.basicConfig(level=logging.INFO,
 print(r'''
 **************************************
     欢迎使用i茅台自动预约工具
-    作者GitHub：https://github.com/3 9 7 1 7 9 4 5 9
-    vx：L 3 9 7 1 7 9 4 5 9 加好友注明来意
 **************************************
 ''')
 
@@ -67,7 +65,7 @@ for section in configs.sections():
             shop_info = source_data.get(str(max_shop_id))
             title = config.ITEM_MAP.get(item)
             shopInfo = f'商品:{title};门店:{shop_info["name"]}'
-            logging.info(shopInfo)
+            # logging.info(shopInfo)
             reservation_params = process.act_params(max_shop_id, item)
             # 核心预约步骤
             r_success, r_content = process.reservation(reservation_params, mobile)
@@ -76,7 +74,7 @@ for section in configs.sections():
                 s_title = '！！失败！！茅台预约'
             s_content = s_content + r_content + shopInfo + "\n"
             # 领取小茅运和耐力值
-            process.getUserEnergyAward(mobile)
+            # process.getUserEnergyAward(mobile)
     except BaseException as e:
         print(e)
         logging.error(e)
