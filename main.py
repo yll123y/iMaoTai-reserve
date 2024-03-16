@@ -21,8 +21,6 @@ print(r'''
 ''')
 
 process.get_current_session_id()
-process.send_msg('eee','fghh')
-
 # 校验配置文件是否存在
 configs = login.config
 if len(configs.sections()) == 0:
@@ -30,14 +28,11 @@ if len(configs.sections()) == 0:
     sys.exit(1)
 
 aes_key = privateCrypt.get_aes_key()
-process.send_msg('111','fghh')
 s_title = '茅台预约成功'
 s_content = ""
-
 for section in configs.sections():
     if (configs.get(section, 'enddate') != 9) and (TODAY > configs.get(section, 'enddate')):
         continue
-    process.send_msg('221','fghh')
     mobile = privateCrypt.decrypt_aes_ecb(section, aes_key)
     province = configs.get(section, 'province')
     city = configs.get(section, 'city')
