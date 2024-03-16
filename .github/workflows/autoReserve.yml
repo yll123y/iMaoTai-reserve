@@ -4,7 +4,7 @@
 name: imaotai-action
 
 on:
-  push:
+  workflow_dispatch:
     branches: [ "master" ]
     paths:
       - '.github/workflows/**'
