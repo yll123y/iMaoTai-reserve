@@ -21,6 +21,7 @@ print(r'''
 ''')
 
 process.get_current_session_id()
+process.send_msg('eee','fghh')
 
 # 校验配置文件是否存在
 configs = login.config
