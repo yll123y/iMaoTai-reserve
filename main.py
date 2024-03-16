@@ -30,7 +30,7 @@ if len(configs.sections()) == 0:
     sys.exit(1)
 
 aes_key = privateCrypt.get_aes_key()
-
+process.send_msg('111','fghh')
 s_title = '茅台预约成功'
 s_content = ""
 
