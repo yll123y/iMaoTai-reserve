@@ -52,15 +52,19 @@ if __name__ == '__main__':
 
     while 1:
         process.init_headers()
-        location_select: dict = get_location()
-        province = location_select['province']
-        city = location_select['city']
-        location: str = location_select['location']
+        # location_select: dict = get_location()
+        # province = location_select['province']
+        # city = location_select['city']
+        province = '浙江省'
+        city = '杭州市'
+        # location: str = location_select['location']
+        location: str = '120.312265,30.39799'
 
         mobile = input("输入手机号[13812341234]:").strip()
         process.get_vcode(mobile)
         code = input(f"输入 [{mobile}] 验证码[1234]:").strip()
         token, userId = process.login(mobile, code)
+        # print(token, userId)
 
         endDate = input(f"输入 [{mobile}] 截止日期(必须是YYYYMMDD,20230819)，如果不设置截止，请输入9：").strip()
 
