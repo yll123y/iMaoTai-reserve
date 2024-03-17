@@ -48,7 +48,6 @@ for section in configs.sections():
     # 根据配置中，要预约的商品ID，城市 进行自动预约
     try:
         for item in config.ITEM_CODES:
-            process.send_msg('444','fghh')
             max_shop_id = process.get_location_count(province=province,
                                                      city=city,
                                                      item_code=item,
@@ -59,7 +58,6 @@ for section in configs.sections():
             # print(f'max shop id : {max_shop_id}')
             if max_shop_id == '0':
                 continue
-            process.send_msg('555','fghh')
             shop_info = source_data.get(str(max_shop_id))
             title = config.ITEM_MAP.get(item)
             shopInfo = f'商品:{title};门店:{shop_info["name"]}'
@@ -72,7 +70,7 @@ for section in configs.sections():
                 s_title = '！！失败！！茅台预约'
             s_content = s_content + r_content + shopInfo + "\n"
             # 领取小茅运和耐力值
-            # process.getUserEnergyAward(mobile)
+            process.getUserEnergyAward(mobile)
     except BaseException as e:
         print(e)
         logging.error(e)
